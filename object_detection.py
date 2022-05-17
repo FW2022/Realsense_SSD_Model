@@ -142,9 +142,13 @@ class CameraDetection(object):
                                                                     use_display_name=True)
         category_index = label_map_util.create_category_index(categories)
         print(category_index)
+        #print(category_index[1]['name'])
         count =0
         counts= {"Sea":0,"Sky":0,"Space":0}
-
+        wordcount=[]
+        wordscount =[]
+        global results
+        results = []
         while True:
             self.lock.acquire()
             display_image = self.display_image
@@ -206,23 +210,37 @@ class CameraDetection(object):
                         #print("Sea")
                         counts["Sea"] +=1
                         count+=1
-                        #print(count)
+                        wordcount.extend(labels)
+                        print(count)
                     elif dist >0.000500 and dist <0.000520 :
                         #print("Sky")
                         counts["Sky"] +=1
                         count+=1
-                        #print(count)
+                        wordcount.extend(labels)
+                        print(count)
                     elif dist > 0.000520 :
                         #print("Space")
                         counts["Space"] +=1
                         count+=1
-                        #print(count)
+                        wordcount.extend(labels)
+                        print(count)
                 elif count > 59 :
                     global max_key
                     max_key = max(counts,key=counts.get)
                     print(max_key)
                     time.sleep(time_duration)
+                    for i in category_index:
+                        wordscount.append(wordcount.count(category_index[i]['name']))
+                    #print(wordscount)
+                    #print(len(wordscount))
+                    #print(len(category_index))
+                    for s in category_index :
+                        if wordscount[s-1] > 0 :
+                            results.append(category_index[s]['name'])
+                    print(results)
                     count = 0
+                    results = []
+                    wordscount = []
                     counts = dict.fromkeys(counts,0)
 
 
@@ -259,7 +277,7 @@ if __name__ == '__main__':
         while True:
             data_rcv = await websocket.recv() ; # receiving the data from client.
             print("received data = " + data_rcv);
-            await websocket.send("websock_svr send data = " + max_key); # send received data
+            await websocket.send("websock_svr send data = " + max_key, results); # send received data
 
     # websocket server creation
     websoc_svr = websocket.serve(accept,"localhost",3000);
