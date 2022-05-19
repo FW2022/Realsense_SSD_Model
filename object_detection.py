@@ -10,11 +10,17 @@ import tensorflow as tf
 from threading import Thread, Lock
 from queue import Queue
 
+from gql import gql, Client
+from gql.transport.aiohttp import AIOHTTPTransport
+
 # https://hororolol.tistory.com/218
 # protoc object_detection/protos/*.proto --python_out=.
+# https://stackoverflow.com/questions/50077353/tensorflow-object-detection-api-get-labels-in-array
+
+# ImportError: cannot import name 'builder' from 'google.protobuf.internal'  -> pip install --upgrade protobuf 실행
 
 
-PATH_TO_LABELS = 'Larva_Recognition.v17i.tfrecord/SFU/test/Characters_label_map.pbtxt'
+PATH_TO_LABELS = 'Larva_Recognition.v18-minatureonly.tfrecord/SFU/test/Characters_label_map.pbtxt'
 NUM_CLASSES = 24
 COLOR_HASH = {}
 
@@ -102,14 +108,14 @@ class CameraDetection(object):
         depth_sensor = profile.get_device().first_depth_sensor()
         depth_scale = depth_sensor.get_depth_scale()
         hole_filling = rs.hole_filling_filter(1)
-        config.enable_stream(rs.stream.color, 1280, 720, rs.format.bgr8, 30)
-        #config.enable_stream(rs.stream.depth, 1280, 720, rs.format.y8, 30)  # 추가
+        config.enable_stream(rs.stream.color, 1920, 1080, rs.format.bgr8, 30)
+        config.enable_stream(rs.stream.depth, 1280, 720, rs.format.y8, 30)  # 추가
         # depth_image = self.depth_image
 
         while True:
             frames = pipeline.wait_for_frames()
             color_frame = frames.get_color_frame()
-            color_image = np.asanyarray(color_frame.get_data())
+            color_image = cv2.cvtColor(np.asanyarray(color_frame.get_data()),cv2.COLOR_BGR2RGB)
             depth_frame = frames.get_depth_frame()
 
             colorizer = rs.colorizer()
@@ -144,7 +150,7 @@ class CameraDetection(object):
         print(category_index)
         #print(category_index[1]['name'])
         count =0
-        counts= {"Sea":0,"Sky":0,"Space":0}
+        counts= {"sea":0,"ether":0,"space":0}
         wordcount=[]
         wordscount =[]
         global results
@@ -208,19 +214,19 @@ class CameraDetection(object):
                 if count < 60 :
                     if dist <0.000500 :
                         #print("Sea")
-                        counts["Sea"] +=1
+                        counts["sea"] +=1
                         count+=1
                         wordcount.extend(labels)
                         print(count)
                     elif dist >0.000500 and dist <0.000520 :
-                        #print("Sky")
-                        counts["Sky"] +=1
+                        #print("ether")
+                        counts["ether"] +=1
                         count+=1
                         wordcount.extend(labels)
                         print(count)
                     elif dist > 0.000520 :
                         #print("Space")
-                        counts["Space"] +=1
+                        counts["space"] +=1
                         count+=1
                         wordcount.extend(labels)
                         print(count)
@@ -228,7 +234,6 @@ class CameraDetection(object):
                     global max_key
                     max_key = max(counts,key=counts.get)
                     print(max_key)
-                    time.sleep(time_duration)
                     for i in category_index:
                         wordscount.append(wordcount.count(category_index[i]['name']))
                     #print(wordscount)
@@ -238,6 +243,8 @@ class CameraDetection(object):
                         if wordscount[s-1] > 0 :
                             results.append(category_index[s]['name'])
                     print(results)
+                    webclient()
+                    time.sleep(time_duration)
                     count = 0
                     results = []
                     wordscount = []
@@ -245,7 +252,7 @@ class CameraDetection(object):
 
 
             cv2.namedWindow('RealSense', cv2.WINDOW_AUTOSIZE)
-            cv2.imshow('RealSense', display_image)
+            cv2.imshow('RealSense', display_image) # https://github.com/IntelRealSense/librealsense/issues/4542 Color issue
 
             cv2.waitKey(1)
             time.sleep(0.01)
@@ -265,23 +272,65 @@ def main():
             print("press keyboard interrupt")
             cam_process.stop()
 
-import asyncio
-import websocket
+def webclient():
+    # Select your transport with a defined url endpoint
+    transport = AIOHTTPTransport(url="http://maemesoft.iptime.org:8053/graphql")
+
+    # Create a GraphQL client using the defined transport
+    client = Client(transport=transport, fetch_schema_from_transport=True)
+
+    # Provide a GraphQL query
+    query = gql(
+        """
+        mutation Mutation($place: String!) {
+        setPlace(place: $place)
+    }
+    """
+    )
+    query2 = gql(
+        """
+    mutation Mutation($shape: [String!]!) {
+        setShape(shape: $shape)
+    }
+    """
+    )
+
+    # cherry 부서짐
+    # megaphone x
+    # ukulele 훈련중
+    # castle x
+    # cup x -> Pocket Watch가 cup으로 대체
+    # mic 이거 부서짐
+    # magnifyingGlass 훈련중
+    # ['Minature_Airplane', 'Minature_Skull']
+    res = results.copy()
+    for i in range(len(res)):
+        if (res[i] == "Minature_Airplane"):
+            res[i] = "aircraft"
+        elif (res[i] == "Minature_Pocket_Watch"):
+            res[i] = "cup"  # 이거 부서짐
+        elif (res[i] == "Minature_Skull"):
+            res[i] = "skull"
+        elif (res[i] == "Minature_Sofa"):
+            res[i] = "sofa"
+        elif (res[i] == "Minature_Statue"):
+            res[i] = "marble_bust"
+        elif (res[i] == "Miniature_Mushroom"):
+            res[i] = "mushroom"
+        elif (res[i] == "Miniature_Horse"):
+            res[i] = "horse"
+        elif (res[i] == "Miniature_Elephant"):
+            res[i] = "elephant"
+
+    # Execute the query on the transport
+    params = {"place": max_key}
+    params2 = {"shape": res}
+    result = client.execute(query, variable_values=params)
+    result2 = client.execute(query2, variable_values=params2)
+    print(result)
+    print(result2)
 
 if __name__ == '__main__':
     main()
-
     print(max_key)
-    # call back for websockets serve (accept.
-    async def accept(websocket, path):
-        while True:
-            data_rcv = await websocket.recv() ; # receiving the data from client.
-            print("received data = " + data_rcv);
-            await websocket.send("websock_svr send data = " + max_key, results); # send received data
 
-    # websocket server creation
-    websoc_svr = websocket.serve(accept,"localhost",3000);
-
-    # waiting
-    asyncio.get_event_loop().run_until_complete(websoc_svr);
-    asyncio.get_event_loop().run_forever();
