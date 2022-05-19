@@ -1,6 +1,11 @@
 # Realsense_SSD_Model
 Classification classes of Miniature and Finding Depth by Using Tensorflow SSD Model and Realsense D455
 
+## 졸업작품전시회 (Graduation Product Exhibition)
+![image](https://github.com/FW2022/Realsense_SSD_Model/blob/main/ImgforRM/FROMPROM.png)
+
+숭실대학교 글로벌미디어학부 졸업전시회, FROMPROM 2022의 출품작입니다.
+
 
 ## SSD Model
 
