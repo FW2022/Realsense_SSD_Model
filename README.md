@@ -13,6 +13,12 @@ SSD는 YOLO와 같은 1-Stage Object Detection이다. YOLO에서는 이미지를
 
 ![image](https://github.com/FW2022/Realsense_SSD_Model/blob/main/ImgforRM/SSDModel.png)
 
-이미지에서 보여지는 object들의 크기는 매우 다양하고 convolution layer 들을 통해 추출한 한 feature map만 갖고 detect 하기에는 부족하다라는 생각에서 나온 논문입니다. SSD에서는 image feature를 다양한 위치의 layer들에서 추출하여 detector와 classifier를 적용합니다. 앞쪽 layer에서는 receptive field size가 작으니 더 작은 영역을 detect 할 수 있고, 뒤쪽 layer로 갈수록 receptive field size가 커지므로 더 큰 영역을 detect 할 수 있다는 특징을 이용했습니다.
+이미지에서 보여지는 object들의 크기는 매우 다양하고 convolution layer 들을 통해 추출한 한 feature map만 갖고 detect 하기에는 부족하다라는 생각에서 나온 논문입니다. SSD에서는 image feature를 다양한 위치의 layer들에서 추출하여 detector와 classifier를 적용합니다. 앞쪽 layer에서는 receptive field size가 작으니 더 작은 영역을 detect 할 수 있고, 뒤쪽 layer로 갈수록 receptive field size가 커지므로 더 큰 영역을 detect 할 수 있다는 특징을 이용했습니다. SSD는 YOLO 보다 속도나 정확도 측면에서 더 높은 성능을 보였고, 이어서 DSSD, RetinaNet 등의 논문이 발표되었습니다.
 
-SSD는 YOLO 보다 속도나 정확도 측면에서 더 높은 성능을 보였고, 이어서 DSSD, RetinaNet 등의 논문이 발표되었습니다.
+우리 작품에 쓰인 Tensorflow Model은 Tensorflow 1 Object Dectection Model zoo의 SSD MobileNet v1 coco 2017이다. 
+
+링크 : https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md
+
+## Realsense Depth Camera
+
+Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의 거리를 인식받아 그 거리에 따라 바다와 하늘, 우주로의 배경전환을 적용했다.
