@@ -71,14 +71,14 @@ Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의
 <table>
   <tr>
       <td align="center">
-    <a href="https://github.com/Junst">
-        <img src="https://avatars.githubusercontent.com/u/30133053?v=4" width="150px;" alt=""/>
+    <a>
+        <img src="https://avatars.githubusercontent.com/u/30133053?v=4" width="150px;" alt="" href="https://github.com/Junst"/>
         <br />
         <sub>
-            <b>< 고준영 ></b>
+            <a href="https://github.com/Junst"><b>< 고준영 ></b></a>
             <br />
-            음악 분류 모델 개발 <br />
-            미니어처 분류 모델 개발
+            <a href="https://github.com/FW2022/MusicMoodRecognition"> 음악 분류 모델 개발</a> <br />
+            <a href="https://github.com/FW2022/Realsense_SSD_Model"> 미니어처 분류 모델 개발 </a>
         </sub>
     </a>
 </td>
