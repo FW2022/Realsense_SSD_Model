@@ -1,3 +1,31 @@
+<p align="middle">
+    <img width="200px;" src="https://github.com/omizha/Space4U-client/blob/master/docs/img/logo.png?raw=true"/>
+</p>
+<h2 align="middle">Space for U</h2>
+<p align="middle">WebGL(three.js) + AI를 활용한 인터랙티브 미디어 아트</p>
+<p align="middle">https://space4-u-client.vercel.app/space</p>
+<p align="middle">
+    WebGL </br>
+    <img src="https://img.shields.io/badge/tech-ReactJS-blue" />
+    <img src="https://img.shields.io/badge/tech-ThreeJS-lightgrey" />
+    <img src="https://img.shields.io/badge/tech-NestJS-red" />
+    <img src="https://img.shields.io/badge/tech-GraphQL-purple" />
+    </br>
+    </br> AI </br>
+    <img src="https://img.shields.io/badge/tech-Tenserflow-orange" />
+    <img src="https://img.shields.io/badge/tech-Keras-red" />
+    <img src="https://img.shields.io/badge/tech-Sklearn-blue" />    
+    </br>
+    </br> OpenCV </br>
+    <img src="https://img.shields.io/badge/tech-Librosa-purple" />
+    <img src="https://img.shields.io/badge/tech-pygame-green" />
+    
+</p>
+
+## Exhibition Process
+<img src="https://github.com/omizha/Space4U-client/blob/master/docs/img/ExhibitionProcess1.png?raw=true">
+<img src="https://github.com/omizha/Space4U-client/blob/master/docs/img/ExhibitionProcess2.png?raw=true">
+
 # Realsense_SSD_Model
 Classification classes of Miniature and Finding Depth by Using Tensorflow SSD Model and Realsense D455
 
@@ -38,3 +66,45 @@ Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의
 참초 : http://www.tcpschool.com/java/java_thread_multi
 
 본 작품의 2단계에 쓰인 Object Detection은 One Thread에서 입력과 출력, Display가 모두 처리되는 것보다 Multi Thread에서 각각의 단계를 수행하는 것이 더 빨라서 Multi Therad를 사용했다.
+
+## Contributors
+<table>
+  <tr>
+      <td align="center">
+    <a href="https://github.com/Junst">
+        <img src="https://avatars.githubusercontent.com/u/30133053?v=4" width="150px;" alt=""/>
+        <br />
+        <sub>
+            <b>< 고준영 ></b>
+            <br />
+            음악 분류 모델 개발 <br />
+            미니어처 분류 모델 개발
+        </sub>
+    </a>
+</td>
+    <td align="center">
+        <a href="https://github.com/omizha">
+            <img src="https://avatars.githubusercontent.com/u/4525704?v=4?s=100" width="150px;" alt=""/>
+            <br />
+            <sub>
+                <b>< 하정훈 ></b>
+                <br />
+                WebGL 인터랙티브 웹 개발 <br />
+                인공지능 파이프라인 서버 구축
+            </sub>
+        </a>
+    </td>
+    <td align="center">
+    <a href="https://github.com/your-mistletoe">
+        <img src="https://avatars.githubusercontent.com/u/84714861?v=4" width="150px;" alt=""/>
+        <br />
+        <sub>
+            <b>< 박다인 ></b>
+            <br />
+            퍼지 추론 시스템 개발 <br />
+            전시 연출 및 굿즈 디자인
+        </sub>
+    </a>
+</td>
+</table>
+
