@@ -29,12 +29,6 @@
 # Realsense_SSD_Model
 Classification classes of Miniature and Finding Depth by Using Tensorflow SSD Model and Realsense D455
 
-## 졸업작품전시회 (Graduation Product Exhibition)
-![image](https://github.com/FW2022/Realsense_SSD_Model/blob/main/ImgforRM/FROMPROM.png)
-
-숭실대학교 글로벌미디어학부 졸업전시회, FROMPROM 2022의 출품작입니다.
-
-
 ## SSD Model
 
 SSD는 YOLO와 같은 1-Stage Object Detection이다. YOLO에서는 이미지를 GRID로 나누어서 각 영역에 대해 Bounding Box를 예측했다면, SSD는 CNN pyramidal feature hierarchy를 이용해 예측합니다. SSD의 첫 논문은 2016년 ECCV에서 발표됐다.
@@ -66,6 +60,11 @@ Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의
 참조 : http://www.tcpschool.com/java/java_thread_multi
 
 본 작품의 2단계에 쓰인 Object Detection은 One Thread에서 입력과 출력, Display가 모두 처리되는 것보다 Multi Thread에서 각각의 단계를 수행하는 것이 더 빨라서 Multi Therad를 사용했다.
+
+## 졸업작품전시회 (Graduation Product Exhibition)
+<img src="https://github.com/FW2022/Realsense_SSD_Model/blob/main/ImgforRM/FROMPROM.png" width="300">
+
+숭실대학교 글로벌미디어학부 졸업전시회, FROMPROM 2022의 출품작입니다.
 
 ## 논문 등재
 
