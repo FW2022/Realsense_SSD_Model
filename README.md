@@ -23,8 +23,8 @@
 </p>
 
 ## Exhibition Process
-<img src="https://github.com/omizha/Space4U-client/blob/master/docs/img/ExhibitionProcess1.png?raw=true">
-<img src="https://github.com/omizha/Space4U-client/blob/master/docs/img/ExhibitionProcess2.png?raw=true">
+<img src="https://github.com/omizha/Space4U-client/blob/master/docs/img/ExhibitionProcess1.png?raw=true" width=600>
+<img src="https://github.com/omizha/Space4U-client/blob/master/docs/img/ExhibitionProcess2.png?raw=true" width=600>
 
 # Realsense_SSD_Model
 Classification classes of Miniature and Finding Depth by Using Tensorflow SSD Model and Realsense D455
