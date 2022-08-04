@@ -63,9 +63,18 @@ Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의
 컴퓨터에서 동시에 처리할 수 있는 최대 작업 수는 CPU의 코어(core) 수와 같다. 만약 CPU의 코어 수보다 더 많은 스레드가 실행되면, 각 코어가 정해진 시간 동안 여러 작업을 번갈아가며 수행한다. 이 때 각 스레드가 서로 교체될 때 스레드 간의 문맥 교환(context switching)이 발생한다. 문맥 교환이란 현재까지의 작업 상태나 다음 작업에 필요한 각종 데이터를 저장하고 읽어오는 작업이다.
 이러한 문맥 교환에 걸리는 시간이 커지면 커질수록, 멀티 스레딩의 효율은 저하된다. 오히려 많은 양의 단순한 계산은 싱글 스레드로 동작하는 것이 더 효율적일 수 있다. 따라서 많은 수의 스레드를 실행하는 것이 언제나 좋은 성능을 보이는 것은 아니라는 점을 유의해야 한다.
 
-참초 : http://www.tcpschool.com/java/java_thread_multi
+참조 : http://www.tcpschool.com/java/java_thread_multi
 
 본 작품의 2단계에 쓰인 Object Detection은 One Thread에서 입력과 출력, Display가 모두 처리되는 것보다 Multi Thread에서 각각의 단계를 수행하는 것이 더 빨라서 Multi Therad를 사용했다.
+
+## 논문 등재
+
+본 작품에 쓰인 기술은 한국컴퓨터정보학회 하계학술대회 논문집 제 30권 제 2호 (2022.07)에 등재됐다.
+
+This is Published on Proceedings Paper of The Korea Society of Computer and Information(KSCI) Summer Conference 2022.
+
+3D 카메라 기반 디지털 좌표 인식 기술 제안 (Proposal of 3D Camera-Based Digital Coordinate Recognition Technology)
+
 
 ## Contributors
 <table>
