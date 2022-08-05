@@ -66,6 +66,13 @@ Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의
 
 숭실대학교 글로벌미디어학부 졸업전시회, FROMPROM 2022의 출품작입니다.
 
+유튜브 / YouTube Results Video
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/_XkQStYTKdE/0.jpg)](https://www.youtube.com/watch?v=_XkQStYTKdE)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/8xDn0njgrVI/0.jpg)](https://www.youtube.com/watch?v=8xDn0njgrVI)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/zDbmDN8v4uI/0.jpg)](https://www.youtube.com/watch?v=zDbmDN8v4uI)
+
+
 ## 논문 등재
 
 본 작품에 쓰인 기술은 한국컴퓨터정보학회 하계학술대회 논문집 제 30권 제 2호 (2022.07)에 등재됐다.
