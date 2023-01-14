@@ -79,7 +79,7 @@ Realsense Depth Camera D455를 사용했다. Depth Camera를 통해 물체와의
 
 This is Published on Proceedings Paper of The Korea Society of Computer and Information(KSCI) Summer Conference 2022.
 
-3D 카메라 기반 디지털 좌표 인식 기술 제안 (Proposal of 3D Camera-Based Digital Coordinate Recognition Technology)
+[3D 카메라 기반 디지털 좌표 인식 기술 제안 (Proposal of 3D Camera-Based Digital Coordinate Recognition Technology)](http://www.koreascience.or.kr/journal/CPTSA9.pub?&lang=ko&orgId=tkioa)
 
 
 ## Contributors
